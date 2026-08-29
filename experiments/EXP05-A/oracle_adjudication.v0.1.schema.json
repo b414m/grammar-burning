@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grammar-burning.local/experiments/EXP05-A/oracle_adjudication.v0.1.schema.json",
+  "title": "EXP05-A Oracle Adjudication v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["archive_identity", "oracle_identity", "adjudication_order", "transitions"],
+  "properties": {
+    "archive_identity": {"type": "string", "minLength": 1},
+    "oracle_identity": {"type": "string", "minLength": 1},
+    "oracle_saw_engine_output_before_labeling": {"type": "boolean", "const": false},
+    "adjudication_order": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "transition_id",
+          "source_artifact_refs",
+          "target_artifact_refs",
+          "proposed_relation",
+          "label",
+          "rationale"
+        ],
+        "properties": {
+          "transition_id": {"type": "string", "minLength": 1},
+          "source_artifact_refs": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "minItems": 1
+          },
+          "target_artifact_refs": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "minItems": 1
+          },
+          "proposed_relation": {"type": "string", "minLength": 1},
+          "label": {
+            "enum": [
+              "SUPPORTED",
+              "UNSUPPORTED",
+              "INSUFFICIENT_INFORMATION",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "rationale": {"type": "string", "minLength": 1},
+          "evidence_refs": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1}
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["LOW", "MEDIUM", "HIGH"]
+          }
+        }
+      }
+    }
+  }
+}
