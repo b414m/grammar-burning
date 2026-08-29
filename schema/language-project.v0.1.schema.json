@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grammar-burning.local/schema/language-project.v0.1.schema.json",
+  "title": "LanguageProject v0.1 draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "objects",
+    "actors",
+    "statement_types",
+    "actions",
+    "validity_conditions",
+    "authority_relations",
+    "transitions",
+    "artifacts"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "objects": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "role"],
+        "properties": {
+          "id": {"type": "string"},
+          "role": {"type": "string"},
+          "authority_scope": {
+            "type": "array",
+            "items": {"type": "string"},
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "statement_types": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "actions": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "validity_conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "applies_to", "condition"],
+        "properties": {
+          "id": {"type": "string"},
+          "applies_to": {"type": "string"},
+          "condition": {"type": "string"},
+          "evidence_refs": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "authority_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["actor_id", "may_authorize"],
+        "properties": {
+          "actor_id": {"type": "string"},
+          "may_authorize": {
+            "type": "array",
+            "items": {"type": "string"},
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "from", "to", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "status": {
+            "enum": ["allowed", "forbidden", "conditional", "unknown"]
+          },
+          "formation_rule_refs": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "artifact_type", "provenance"],
+        "properties": {
+          "id": {"type": "string"},
+          "artifact_type": {"type": "string"},
+          "provenance": {"type": "string"},
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

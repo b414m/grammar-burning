@@ -1,0 +1,67 @@
+{
+  "registry_version": "0.1-draft",
+  "status": "exploratory",
+  "maturity_model_ref": "method/grammar-discovery-protocol.v0.1.md",
+  "rules": [
+    {
+      "id": "FR-001",
+      "statement": "La existencia de una candidatura no equivale a autoridad de selección.",
+      "scope": ["selection", "frame_binding", "agent_proposals"],
+      "forbids_or_requires": "Prohíbe promover candidate -> selected sin una fuente de autoridad explícita.",
+      "counterexample": "Un agente presenta una sola opción y el sistema la trata como selección humana implícita.",
+      "maturity": "R1_candidate",
+      "evidence_status": "external_project_evidence_not_yet_imported",
+      "known_limits": "No define por sí sola quién debe tener autoridad de selección en todos los dominios."
+    },
+    {
+      "id": "FR-002",
+      "statement": "La intención no constituye evidencia.",
+      "scope": ["human_intent", "claims", "requirements"],
+      "forbids_or_requires": "Prohíbe promover intent -> evidence sin un artefacto evidencial independiente.",
+      "counterexample": "El usuario solicita una predicción y la solicitud se registra como evidencia predictiva.",
+      "maturity": "R1_candidate",
+      "evidence_status": "external_project_evidence_not_yet_imported",
+      "known_limits": "La intención sí puede definir objetivos normativos o requisitos cuando existe autoridad para ello."
+    },
+    {
+      "id": "FR-003",
+      "statement": "Una clase de evidencia no puede promover silenciosamente una clase de afirmación que exige mayor soporte.",
+      "scope": ["epistemic_claims", "claim_ceiling"],
+      "forbids_or_requires": "Exige una transición explícita y soporte adicional cuando una afirmación supera el techo permitido por la evidencia.",
+      "counterexample": "Una correlación observada se transforma directamente en una afirmación causal.",
+      "maturity": "R1_candidate",
+      "evidence_status": "external_project_evidence_not_yet_imported",
+      "known_limits": "La jerarquía exacta de clases de afirmación depende del dominio y debe declararse."
+    },
+    {
+      "id": "FR-004",
+      "statement": "Una propuesta no equivale a autoridad para cambiar el estado normativo del sistema.",
+      "scope": ["agents", "human_gates", "governance"],
+      "forbids_or_requires": "Prohíbe proposal -> normative_state_change sin una transición autorizada.",
+      "counterexample": "El agente recomienda una acción y el workflow la registra como aprobada sin decisión autorizada.",
+      "maturity": "R1_candidate",
+      "evidence_status": "external_project_evidence_not_yet_imported",
+      "known_limits": "Un sistema puede delegar autoridad a un agente, pero esa delegación debe ser explícita."
+    },
+    {
+      "id": "FR-005",
+      "statement": "La autorización no equivale a ejecución.",
+      "scope": ["runtime", "tool_use", "execution"],
+      "forbids_or_requires": "Exige distinguir el permiso para ejecutar del hecho observable de ejecución.",
+      "counterexample": "Una acción autorizada se reporta como ejecutada aunque el proveedor nunca la aceptó.",
+      "maturity": "R1_candidate",
+      "evidence_status": "external_project_evidence_not_yet_imported",
+      "known_limits": "No especifica la semántica particular de aceptación de cada proveedor."
+    },
+    {
+      "id": "FR-006",
+      "statement": "Un artefacto de diseño no constituye por sí mismo una capacidad de runtime.",
+      "scope": ["app_development", "prototypes", "runtime_capability"],
+      "forbids_or_requires": "Prohíbe design_artifact -> runtime_capability sin implementación y verificación correspondientes.",
+      "counterexample": "Un mockup contiene un botón de notificaciones y se infiere que la aplicación posee permiso y servicio de notificaciones.",
+      "maturity": "R0_observation",
+      "evidence_status": "not_tested",
+      "known_limits": "Regla propuesta específicamente para iniciar la prueba cross-domain."
+    }
+  ]
+}
