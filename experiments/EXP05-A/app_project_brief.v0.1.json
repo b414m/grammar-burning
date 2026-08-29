@@ -1,0 +1,46 @@
+{
+  "brief_version": "0.1",
+  "experiment": "EXP05-A-phase2",
+  "project_id": "attendance-app-01",
+  "domain": "app_development",
+  "constraints": {
+    "ml_allowed": false,
+    "analytics_pipeline_required": false,
+    "external_backend_required": false,
+    "offline_first": true,
+    "target_platform": "android",
+    "preferred_language": "Kotlin",
+    "storage": "local"
+  },
+  "human_intent": "Crear una aplicación móvil sencilla para registrar asistencia de estudiantes durante una clase y consultar el registro del día.",
+  "minimum_user_capabilities": [
+    "crear o seleccionar una sesión de clase",
+    "ver una lista de estudiantes",
+    "marcar presente o ausente",
+    "corregir una marca antes de cerrar la sesión",
+    "consultar el resumen de asistencia del día"
+  ],
+  "non_goals": [
+    "reconocimiento facial",
+    "predicción de ausentismo",
+    "recomendaciones automáticas",
+    "sincronización cloud obligatoria",
+    "notificaciones push obligatorias"
+  ],
+  "open_design_choices": [
+    "arquitectura interna",
+    "modelo de navegación",
+    "persistencia local concreta",
+    "diseño visual",
+    "estrategia de pruebas",
+    "si existe o no una acción explícita de cierre de sesión"
+  ],
+  "acceptance_focus": [
+    "flujo funcional completo",
+    "persistencia local verificable",
+    "estado de UI consistente",
+    "ausencia de capacidades no implementadas presentadas como funcionales"
+  ],
+  "archive_requirement": "Conservar artefactos, decisiones, propuestas descartadas, dudas, implementación, pruebas e intentos de ejecución en el orden en que ocurran.",
+  "formation_rules_disclosed_to_generator": false
+}
