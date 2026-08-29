@@ -1,0 +1,65 @@
+{
+  "registry_version": "0.2",
+  "status": "experimental",
+  "previous_version": "formation-rules/registry.v0.1.json",
+  "evidence_refs": [
+    "experiments/EXP05-A/phase1_result.reference.json"
+  ],
+  "rules": [
+    {
+      "id": "FR-001",
+      "statement": "La existencia de una candidatura no equivale a autoridad de selección.",
+      "compiler_rule_id": "FR-A-PROPOSAL-SELECTION-AUTHORITY",
+      "maturity": "R2_operational",
+      "cross_domain_status": "synthetic_transfer_observed_not_R4",
+      "evidence_status": "executable_and_fixture_tested",
+      "known_limits": "La fase 1 usa fixtures sintéticos y no un oráculo independiente. No define universalmente quién posee autoridad de selección."
+    },
+    {
+      "id": "FR-002",
+      "statement": "La intención no constituye evidencia.",
+      "compiler_rule_id": null,
+      "maturity": "R1_candidate",
+      "cross_domain_status": "not_tested",
+      "evidence_status": "not_operationalized_in_v04",
+      "known_limits": "La intención puede constituir requisito u objetivo normativo cuando la autoridad correspondiente existe."
+    },
+    {
+      "id": "FR-003",
+      "statement": "Una clase de evidencia no puede promover silenciosamente una clase de afirmación que exige mayor soporte.",
+      "compiler_rule_id": "FR-B-EVIDENCE-CLAIM-CEILING",
+      "maturity": "R2_operational",
+      "cross_domain_status": "representation_gap_detected",
+      "evidence_status": "executable_with_domain_specific_claim_order",
+      "known_limits": "El CLAIM_ORDER actual representa descriptive/diagnostic/predictive/causal/prescriptive y no cubre taxonomías de assurance de software. La abstracción y su taxonomía concreta deben separarse en una futura versión."
+    },
+    {
+      "id": "FR-004",
+      "statement": "Una propuesta no equivale a autoridad para cambiar el estado normativo del sistema.",
+      "compiler_rule_id": null,
+      "maturity": "R1_candidate",
+      "cross_domain_status": "not_tested",
+      "evidence_status": "partially_related_to_FR001_but_not_equivalent",
+      "known_limits": "No debe colapsarse con FR-001: selección y cambio de estado normativo son transiciones distintas."
+    },
+    {
+      "id": "FR-005",
+      "statement": "La autorización no equivale a ejecución.",
+      "compiler_rule_id": "FR-C-AUTHORIZATION-EXECUTION",
+      "maturity": "R2_operational",
+      "cross_domain_status": "synthetic_transfer_observed_not_R4",
+      "evidence_status": "executable_and_fixture_tested",
+      "known_limits": "La aceptación de proveedor/runtime sigue siendo una abstracción mínima y debe vincularse a evidencia observable en fase 2."
+    },
+    {
+      "id": "FR-006",
+      "statement": "Un artefacto de diseño no constituye por sí mismo una capacidad de runtime.",
+      "compiler_rule_id": null,
+      "maturity": "R0_observation",
+      "cross_domain_status": "preregistered_for_phase2",
+      "evidence_status": "not_operationalized",
+      "known_limits": "Debe implementarse como regla distinta; no puede inferirse automáticamente de FR-005."
+    }
+  ],
+  "promotion_guard": "No rule may be marked R4 from EXP05-A phase 1 because the probe is synthetic and lacks an independent oracle."
+}
