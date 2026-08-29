@@ -1,0 +1,25 @@
+{
+  "experiment": "EXP05-A",
+  "phase": "phase-1-synthetic-representational-probe",
+  "scientific_status": "IMPLEMENTATION_PROBE_ONLY",
+  "promotion_to_R4_allowed": false,
+  "independent_oracle_used": false,
+  "executor": {
+    "repository": "b414m/data-value-compiler",
+    "branch": "eli-formation-rule-engine-v0.1",
+    "commit": "a25c8d794183f61832f4600fff4fc63ffa7f2f9e",
+    "workflow_run_id": 33279508594,
+    "tests_passed": 13
+  },
+  "artifact": {
+    "name": "exp05a-phase1-synthetic-probe",
+    "artifact_id": 9722550029,
+    "digest": "sha256:87c83e605958a1ee5b98d21f37a175797441a8fd6dfb293e0927eed8d88f42be"
+  },
+  "observed_summary": {
+    "all_fixture_oracle_labels_matched": true,
+    "FR-A-PROPOSAL-SELECTION-AUTHORITY": "SYNTHETIC_TRANSFER_OBSERVED",
+    "FR-B-EVIDENCE-CLAIM-CEILING": "REPRESENTATION_GAP",
+    "FR-C-AUTHORIZATION-EXECUTION": "SYNTHETIC_TRANSFER_OBSERVED"
+  }
+}
