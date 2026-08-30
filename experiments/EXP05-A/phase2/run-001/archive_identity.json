@@ -1,0 +1,45 @@
+{
+  "archive_identity_version": "0.1",
+  "experiment": "EXP05-A-phase2",
+  "run_id": "blind-app-run-001",
+  "project_id": "attendance-app-01",
+  "source": {
+    "delivery_channel": "user_supplied_zip",
+    "uploaded_filename": "attendance-app-01.zip",
+    "generator_declared_in_manifest": "claude"
+  },
+  "archive": {
+    "sha256": "02d3b426e6ecd7e129c1d7d57ad8a06ee3f54a36fbf008c3883a90723571dc0b",
+    "size_bytes": 69614,
+    "zip_entries": 100,
+    "uncompressed_bytes": 128020,
+    "root": "attendance-app-01/"
+  },
+  "generator_manifest": {
+    "relative_path": "attendance-app-01/manifest.json",
+    "sha256": "0346657ac528da7bde1b8de85309077b20463b1befdf9aa09c22afb629974713",
+    "declared_artifact_count": 53,
+    "verified_artifact_hashes": 53,
+    "hash_mismatches": 0,
+    "unlisted_files_except_manifest": 0,
+    "missing_listed_files": 0
+  },
+  "transport_input_match": {
+    "status": "MATCH",
+    "public_transport_commit": "6f308488f05307c8a6bcbca6aeb6a1b5ab4b0f38",
+    "README.source.md_sha256": "c044ebdba5843542f001fccec8f4f039eafde7b3fb3cf153da84c0cd1e76184a",
+    "app_project_brief.v0.1.json_sha256": "483a85e2dfb7f9d3b280608ddfda1fb0710c20d75340bf70f28b107861ffd51d",
+    "blind_generator_prompt.v0.1.md_sha256": "1de035a20f6a02f8177f2af5297fe7f3c98e13abaa7e6fd95e561ad295bc9124"
+  },
+  "zip_safety_checks": {
+    "path_traversal_entries": 0,
+    "duplicate_paths": 0,
+    "symlink_entries": 0
+  },
+  "required_archive_directories_present": true,
+  "scientific_status": "SEALED_BEFORE_SEMANTIC_ADJUDICATION",
+  "notes": [
+    "This identity record was created before semantic transition adjudication or FormationRuleEngine scoring.",
+    "The exact ZIP bytes remain the authoritative delivered archive; this repository record pins them by SHA-256."
+  ]
+}
