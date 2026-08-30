@@ -20,3 +20,6 @@ Both agents independently transferred structural grounding. Adversarial mutation
 
 ## v0.6-pre — semantic attestation
 External pinned execution records, case-specific semantic attestation profiles and test invocation selectors close the known semantic-laundering escapes. Two real controls ACCEPT; 22 distinct mutant operators rejected against both outputs (44/44 applications).
+
+## Case E v0.6 transfer gate — prepared
+A final agent-facing bundle reuses the same sealed Case E corpus and exposes `v0.6-pre` semantic attestation. The public stimulus preserves 11/11 sealed hashes, has canonical ZIP paths, contains no reference graph/mutants/prior outputs, and was preflighted against two private controls (`valid=true`, 0 errors). This gate tests whether Claude Code and Codex can independently author X-08/X-09/X-07R/T-01 rather than merely consume a migrated projection.
