@@ -1,0 +1,22 @@
+{
+  "bundle_id": "case-e-v06-transfer-gate-01",
+  "bundle_version": "0.3",
+  "grammar_candidate": "v0.6-pre",
+  "hash_algorithm": "sha256",
+  "file_count": 22,
+  "archive_sha256": "5e9075ac5e0b6cad094f908fd77b8e1b5d6bf6ed0a8c6afa435308ef059027fe",
+  "properties": {
+    "sealed_corpus_hashes_preserved": "11/11",
+    "canonical_zip_paths": true,
+    "reference_evidence_graph_included": false,
+    "hidden_mutants_included": false,
+    "prior_agent_outputs_included": false,
+    "private_reference_controls_validate": "2/2 valid=true, 0 errors"
+  },
+  "forbidden_contents": [
+    "reference evidence graph",
+    "hidden mutants",
+    "prior agent outputs"
+  ],
+  "note": "The complete distributable ZIP is kept as an external/release artifact identified by archive_sha256; this repository stores the public protocol and identity metadata without exposing hidden evaluation material."
+}
