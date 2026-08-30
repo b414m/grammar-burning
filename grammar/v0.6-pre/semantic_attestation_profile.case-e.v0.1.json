@@ -1,0 +1,94 @@
+{
+  "profile_version": "0.1",
+  "status": "case-specific-attestation-profile",
+  "scope": "case-e-evidence-grounding-01",
+  "authority": {
+    "execution_records": {
+      "relative_path": "execution_records.json",
+      "sha256": "673761a36484bd6d8ad5298533ed62db85b842f6115cdc83abe1b67aaa20e4d1"
+    }
+  },
+  "test_invocation": {
+    "required": true,
+    "allowed_selector_kinds": ["command_arg_equals"]
+  },
+  "evidence_kinds": {
+    "executed_test": {
+      "allowed_selectors": ["full"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "full"},
+        {"op": "eq", "path": "passed", "value": true}
+      ]
+    },
+    "exact_sut": {
+      "allowed_selectors": ["full"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "full"},
+        {"op": "eq", "path": "passed", "value": true}
+      ]
+    },
+    "passing_result": {
+      "allowed_selectors": ["full"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "full"},
+        {"op": "eq", "path": "passed", "value": true}
+      ]
+    },
+    "contract_binding": {
+      "allowed_selectors": ["conformance"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "conformance"},
+        {"op": "eq", "path": "passed", "value": true},
+        {"op": "eq", "path": "adapter", "value": "SQLiteKVStore"}
+      ]
+    },
+    "production_adapter_test": {
+      "allowed_selectors": ["conformance"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "conformance"},
+        {"op": "eq", "path": "passed", "value": true},
+        {"op": "eq", "path": "adapter", "value": "SQLiteKVStore"}
+      ]
+    },
+    "persistence_boundary": {
+      "allowed_selectors": ["persistence"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "persistence"},
+        {"op": "eq", "path": "passed", "value": true},
+        {"op": "eq", "path": "fresh_process", "value": true}
+      ]
+    },
+    "fresh_consumer": {
+      "allowed_selectors": ["persistence"],
+      "result_predicates": [
+        {"op": "eq", "path": "fresh_process", "value": true}
+      ]
+    },
+    "recovered_state": {
+      "allowed_selectors": ["persistence"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "persistence"},
+        {"op": "eq", "path": "passed", "value": true},
+        {"op": "eq", "path": "recovered", "value": "yes"}
+      ]
+    },
+    "concurrency_witness": {
+      "allowed_selectors": ["concurrency"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "concurrency"},
+        {"op": "eq", "path": "passed", "value": true},
+        {"op": "gte", "path": "attempts", "value": 2},
+        {"op": "eq", "path": "successes", "value": 1}
+      ]
+    },
+    "linearization_or_atomicity": {
+      "allowed_selectors": ["concurrency"],
+      "result_predicates": [
+        {"op": "eq", "path": "kind", "value": "concurrency"},
+        {"op": "eq", "path": "passed", "value": true},
+        {"op": "eq", "path": "successes", "value": 1},
+        {"op": "eq", "path": "mechanism", "value": "BEGIN IMMEDIATE + PK"}
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "grammar_candidate_version": "0.6-pre",
+  "status": "EXPERIMENTAL_OUTSIDE_G_v0.1.1",
+  "inherits": "0.5-pre-r1",
+  "tier_a_carry_forward": ["P-01M", "X-01", "X-02", "X-03", "R-01", "R-02", "R-04", "X-05"],
+  "transfer_confirmed": ["X-02G", "X-06"],
+  "experimental_candidates": [
+    {
+      "id": "X-08",
+      "name": "evidence_kind_requires_semantic_attestation",
+      "invariant": "A normative evidence kind cannot advance epistemic state merely because a structurally grounded binding names it. The kind must resolve to an external typed attestation specification whose predicates are mechanically satisfied by materialized result content from the same authoritative execution record."
+    },
+    {
+      "id": "X-09",
+      "name": "execution_record_is_materialized_authority",
+      "invariant": "Every execution supporting VERIFIED claims must bind to an authoritative materialized execution record. Graph command, exit code, success semantics, SUT identity, test identity and result identity must agree with that record."
+    },
+    {
+      "id": "X-07R",
+      "name": "success_semantics_must_be_attested",
+      "invariant": "Typed success semantics are not self-authenticating. The graph representation must agree exactly with authoritative execution metadata; invented assertion counts or predicates are invalid."
+    },
+    {
+      "id": "T-01",
+      "name": "test_invocation_identity",
+      "invariant": "A logical test entity must declare a machine-checkable invocation selector and an execution may EXECUTE that test only when its authoritative command satisfies the selector. Shared source-file identity alone is insufficient."
+    }
+  ],
+  "profile_candidates": [
+    {"id": "P-01P", "name": "canonical_archive_projection", "scope": "packaging", "status": "HOLD"}
+  ],
+  "promotion_note": "No changes are promoted into G by this package. v0.6-pre tests semantic attestation against frozen Case E outputs."
+}

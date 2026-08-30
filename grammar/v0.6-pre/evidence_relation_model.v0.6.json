@@ -1,0 +1,96 @@
+{
+  "model_version": "0.6",
+  "status": "candidate-semantic-attestation",
+  "entities": [
+    "artifact",
+    "requirement",
+    "capability",
+    "contract",
+    "test",
+    "execution",
+    "environment",
+    "claim",
+    "evidence",
+    "transition",
+    "invariant"
+  ],
+  "relation_types": [
+    {"type":"DERIVED_FROM","from":["artifact"],"to":["artifact","requirement"],"causal":true},
+    {"type":"DOCUMENTS","from":["artifact"],"to":["artifact","requirement","claim"],"causal":false},
+    {"type":"IMPLEMENTS","from":["artifact"],"to":["contract","requirement","capability"],"causal":false},
+    {"type":"REACHES","from":["artifact","capability"],"to":["artifact","capability"],"causal":false},
+    {"type":"TARGETS","from":["test","execution"],"to":["artifact","contract","capability","requirement","invariant"],"causal":false},
+    {"type":"EXECUTES","from":["execution"],"to":["test"],"causal":false},
+    {"type":"USES","from":["execution"],"to":["artifact","environment"],"causal":false},
+    {"type":"PRODUCES","from":["execution"],"to":["evidence","artifact"],"causal":true},
+    {"type":"SUPPORTS","from":["evidence","execution"],"to":["claim"],"causal":false},
+    {"type":"PRESERVES","from":["transition"],"to":["invariant"],"causal":false}
+  ],
+  "artifact_contract": {
+    "required_fields": ["id","path","sha256"],
+    "path_semantics": "safe relative path beneath package_root",
+    "content_identity": "sha256 of materialized bytes"
+  },
+  "success_semantics": {
+    "allowed_kinds": {
+      "exit_code": {"required_fields":["accepted_codes","observed"]},
+      "assertion_summary": {"required_fields":["passed","failed"]},
+      "predicate": {"required_fields":["predicate_id","observed","expected"]}
+    },
+    "opaque_string_tokens_forbidden": true
+  },
+  "claim_support": {
+    "supported_by_must_equal_support_edges": true,
+    "default_aggregation_policy": "single_execution",
+    "subject_artifact_ids_required_for_verified_claim": true
+  },
+  "external_contract_binding": {
+    "contract_shape": "obligations[] with id, required, required_state, optional required_evidence_kinds",
+    "graph_binding": "requirements[].external_obligation_id"
+  },
+  "evidence_binding": {
+    "required_fields": ["kind","test_id","result_entity_ids","subject_artifact_ids"],
+    "authority": "Only evidence_bindings grounded by typed relations and materialized entities can advance epistemic state.",
+    "grounding_requirements": [
+      "execution has EXECUTES relation to test_id",
+      "test is backed by a materialized test artifact or materialized source path",
+      "execution has PRODUCES relation to every result_entity_id",
+      "each result entity materializes and has content identity",
+      "every subject_artifact_id is present in execution exact SUT"
+    ]
+  },
+  "normative_field_policy": {
+    "dead_normative_symbols_forbidden": true,
+    "forbidden_legacy_fields": ["witnesses","witness_bindings","required_witnesses","reachability_witnesses"],
+    "annotations_are_non_normative": true,
+    "annotation_field": "annotations"
+  },
+  "semantic_attestation": {
+    "principle": "A structurally grounded evidence binding has no epistemic authority until its evidence kind is mechanically attested against authoritative execution metadata and materialized result content.",
+    "execution_record_binding": {
+      "execution_field": "execution_record_id",
+      "required_for": "every execution used by a VERIFIED claim",
+      "must_match": ["command","exit_code","success_semantics","sut path+sha256","test path+sha256","result path+sha256"]
+    },
+    "test_invocation_identity": {
+      "test_field": "invocation_selector",
+      "required_fields": ["kind","index","value"],
+      "supported_kind": "command_arg_equals"
+    },
+    "evidence_kind_authority": {
+      "source": "external semantic_attestation_profile",
+      "unknown_kind": "REJECT",
+      "predicate_source": "materialized result bytes bound by authoritative execution record"
+    },
+    "success_semantics_authority": {
+      "rule": "Graph success_semantics must equal authoritative execution record success_semantics."
+    }
+  },
+  "predicate_dsl": {
+    "supported_ops": ["eq","gte","lte","contains"],
+    "path_semantics": "dot-separated object keys"
+  },
+  "root_of_trust": {
+    "note": "Contract, grammar, model, validator and semantic-attestation profile are verifier configuration outside the evidence graph."
+  }
+}
